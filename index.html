@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Huddle · What matters, in one line</title>
+<meta name="description" content="The sources you trust, your next meeting and the weather, in one quiet line along the bottom of every page. Free, no ads, no algorithm.">
+<meta property="og:title" content="Huddle · What matters, in one line">
+<meta property="og:description" content="The sources you trust, your next meeting and the weather, in one quiet line along the bottom of every page.">
+<meta property="og:image" content="https://huddle-streams.netlify.app/img/chyron/hover.jpg">
+<meta property="og:url" content="https://controlvideodc5-tech.github.io/huddle-app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ECEAE2">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='7' width='22' height='5' rx='2.5' fill='%23F0845A'/%3E%3Crect x='10' y='14' width='17' height='5' rx='2.5' fill='%238FE3D4'/%3E%3Crect x='5' y='21' width='22' height='5' rx='2.5' fill='%23D6F06A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --paper:#ECEAE2;--surface:#F7F6F1;--ink:#141413;--muted:#6A6860;--line:#D5D2C6;
+  --coral:#F0845A;--mint:#8FE3D4;--lilac:#B9A6F2;--lime:#D6F06A;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:96px}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:.98;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px}
+@media (min-width:700px){.wrap{padding-inline:40px}}
+.label{font:500 11px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+
+/* nav */
+.nav{border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:9px;font:900 22px/1 var(--display);letter-spacing:-.04em;text-decoration:none}
+.mark{display:grid;gap:2px}.mark i{display:block;height:5px;border-radius:3px}
+.mark i:nth-child(1){width:17px;background:var(--coral)}.mark i:nth-child(2){width:12px;margin-left:5px;background:var(--mint)}.mark i:nth-child(3){width:17px;background:var(--lime)}
+.nav a.open{font-weight:600;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid var(--ink)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:999px;font:600 15px/1 var(--body);text-decoration:none;border:1px solid var(--ink);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:#F2F0E9}
+.btn.ghost{background:transparent}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{display:grid;gap:40px;align-items:center;padding-block:clamp(40px,7vw,88px) 40px}
+@media (min-width:960px){.hero{grid-template-columns:1.1fr .9fr}}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:900}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.lede{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:34ch;margin-top:20px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:22px 0 0;padding:0}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--coral)}
+.facts li:nth-child(2)::before{background:var(--mint)}.facts li:nth-child(3)::before{background:var(--lime)}
+
+/* live card */
+.live{display:grid;gap:14px;padding:20px;border-radius:24px;background:#141413;color:#F2F0E9;box-shadow:0 30px 60px -30px rgba(20,20,19,.55)}
+@media (min-width:960px){.live{transform:rotate(-1.2deg)}}
+.live-head{display:flex;justify-content:space-between;align-items:center;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(242,240,233,.6)}
+.dot{display:inline-flex;align-items:center;gap:7px;color:#F2F0E9}
+.dot b{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,132,90,.7)}80%,100%{box-shadow:0 0 0 6px rgba(240,132,90,0)}}
+.view{overflow:hidden;border-radius:16px;background:#1F1F1D;border:1px solid rgba(255,255,255,.06)}
+.track{display:flex;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{flex:0 0 100%;min-width:0;min-height:176px;display:grid;align-content:center;justify-items:start;gap:12px;padding:22px}
+.slide b{font:800 23px/1.18 var(--display);letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.chip{display:inline-flex;align-items:center;gap:5px;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:5px;color:#161615}
+.when{font:500 12px/1 var(--mono);color:var(--lime)}
+.dots{display:flex;gap:6px;justify-content:center}
+.dots button{all:unset;cursor:pointer;width:7px;height:7px;border-radius:999px;background:rgba(242,240,233,.25);transition:width .3s,background .3s}
+.dots button.on{width:22px;background:var(--lime)}
+.go{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:12px;background:var(--lime);color:#141413;font-weight:700;font-size:14px}
+
+/* features */
+.section{padding-block:56px}
+.section h2{font-size:clamp(30px,4vw,48px)}
+.grid{display:grid;gap:14px;margin-top:28px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.card{padding:22px;border-radius:20px;background:var(--surface);border:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.card h3{font-size:22px}
+.card p{color:var(--muted)}
+.card.dark{background:#141413;color:#F2F0E9;border-color:#141413}.card.dark p{color:rgba(242,240,233,.7)}
+.card.lilac{background:#F3EFFC}.card.lime{background:#F6FBDF}
+
+/* screenshots */
+.shots{display:grid;grid-auto-flow:column;grid-auto-columns:min(560px,86vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-top:28px;scrollbar-width:thin}
+.shots figure{margin:0;scroll-snap-align:start;border-radius:18px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.shots figcaption{padding:12px 16px;color:var(--muted);font-size:14px}
+
+/* get it */
+.get{display:grid;gap:24px;align-items:center;padding:32px;border-radius:24px;background:#141413;color:#F2F0E9}
+@media (min-width:860px){.get{grid-template-columns:1fr auto}}
+.get p{color:rgba(242,240,233,.7);margin-top:10px}
+.get .btn{border-color:#F2F0E9}
+.get .btn.primary{background:var(--lime);color:#141413;border-color:var(--lime)}
+.get .btn.ghost{color:#F2F0E9}
+
+footer{border-top:1px solid var(--line);margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;padding-block:24px}
+footer nav{display:flex;flex-wrap:wrap;gap:18px}
+footer a{text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){.track{transition:none}.dot b{animation:none}.btn{transition:none}.live{transform:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="Huddle"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>huddle</a>
+    <a class="open" href="https://huddle-streams.netlify.app">Open Huddle</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Curate the signal. <em>Cut the noise.</em></h1>
+      <p class="lede">The sources you trust, your next meeting and the weather, in one quiet line along the bottom of every page.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://huddle-streams.netlify.app/discover">Build your feed</a>
+        <a class="btn ghost" id="getExt" href="https://huddle-streams.netlify.app/chyron">Get the extension</a>
+      </div>
+      <ul class="facts label" aria-label="At a glance"><li>Free</li><li>No ads, no algorithm</li><li>Chrome and Edge</li></ul>
+    </div>
+    <aside class="live" aria-label="What's in the line right now">
+      <div class="live-head"><span class="dot"><b></b>Live now</span><span>Your line</span></div>
+      <div class="view" aria-live="polite"><div class="track" id="track"></div></div>
+      <div class="dots" id="dots"></div>
+      <button class="go" type="button" id="goBar">Running along the bottom of this page <span aria-hidden="true">↓</span></button>
+    </aside>
+  </section>
+
+  <section class="wrap section" aria-labelledby="whatH">
+    <span class="label">What's in the line</span>
+    <h2 id="whatH" style="margin-top:10px">Everything that matters, flowing left to right.</h2>
+    <div class="grid">
+      <article class="card"><span class="label">Your sources</span><h3>Headlines you chose</h3><p>Newsletters, blogs, channels and outlets you pick. No algorithm deciding for you.</p></article>
+      <article class="card lilac"><span class="label">Your day</span><h3>Your next meeting</h3><p>Link Google Calendar and the bar leads with what's next, counting down. Read-only.</p></article>
+      <article class="card dark"><span class="label">Priority moments</span><h3>When it matters, it steps forward</h3><p>Breaking news or a meeting about to start takes over the bar for a few seconds. Then back to the flow.</p></article>
+      <article class="card lime"><span class="label">While you were away</span><h3>Come back caught up</h3><p>After a break, the first pass of the bar leads with what's new since you left.</p></article>
+      <article class="card"><span class="label">Live weather</span><h3>The forecast, at a glance</h3><p>Where you are, or any city you choose.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="seeH">
+    <span class="label">See it</span>
+    <h2 id="seeH" style="margin-top:10px">On every site you visit.</h2>
+    <div class="shots">
+      <figure><img src="https://huddle-streams.netlify.app/img/chyron/hover-640.jpg" srcset="https://huddle-streams.netlify.app/img/chyron/hover-640.jpg 640w, https://huddle-streams.netlify.app/img/chyron/hover.jpg 1280w" sizes="(max-width:640px) 86vw, 560px" alt="Hovering a headline in the Huddle bar shows a preview card" loading="lazy"><figcaption>Hover a headline to preview it.</figcaption></figure>
+      <figure><img src="https://huddle-streams.netlify.app/img/chyron/weather-640.jpg" srcset="https://huddle-streams.netlify.app/img/chyron/weather-640.jpg 640w, https://huddle-streams.netlify.app/img/chyron/weather.jpg 1280w" sizes="(max-width:640px) 86vw, 560px" alt="Live weather in the Huddle bar" loading="lazy"><figcaption>Live weather, right in the bar.</figcaption></figure>
+      <figure><img src="https://huddle-streams.netlify.app/img/chyron/colours-640.jpg" srcset="https://huddle-streams.netlify.app/img/chyron/colours-640.jpg 640w, https://huddle-streams.netlify.app/img/chyron/colours.jpg 1280w" sizes="(max-width:640px) 86vw, 560px" alt="Huddle bars in different colours" loading="lazy"><figcaption>Make it yours: colour, size, position, speed.</figcaption></figure>
+      <figure><img src="https://huddle-streams.netlify.app/img/chyron/my-headlines-640.jpg" srcset="https://huddle-streams.netlify.app/img/chyron/my-headlines-640.jpg 640w, https://huddle-streams.netlify.app/img/chyron/my-headlines.jpg 1280w" sizes="(max-width:640px) 86vw, 560px" alt="A site showing its own headlines in a Huddle bar" loading="lazy"><figcaption>Run your own headlines on your own site.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="getH">
+    <div class="get">
+      <div><h2 id="getH" style="font-size:clamp(28px,3.4vw,40px)">Take it to every page.</h2><p>Add the free Huddle Chyron extension, or start with your feed on the web.</p></div>
+      <div class="actions" style="margin-top:0">
+        <a class="btn primary" href="https://chromewebstore.google.com/detail/oeambgioegliggbephkomgammciegmpf" target="_blank" rel="noopener">Add to Chrome</a>
+        <a class="btn ghost" href="https://microsoftedge.microsoft.com/addons/detail/oeajkpifiblgkhdfpeomghkjpmnidfco" target="_blank" rel="noopener">Add to Edge</a>
+        <a class="btn ghost" href="https://huddle-streams.netlify.app">Open Huddle</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Huddle · Keeping you in touch with what's important</span>
+    <nav class="label" aria-label="Footer">
+      <a href="https://huddle-streams.netlify.app">huddle-streams.netlify.app</a>
+      <a href="https://huddle-streams.netlify.app/privacy">Privacy</a>
+      <a href="https://huddle-streams.netlify.app/terms">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://huddle-streams.netlify.app/chyron.js"></script>
+<script>
+(function () {
+  var API = "https://huddle-streams.netlify.app";
+  var COLORS = { coral: "#F0845A", mint: "#8FE3D4", lilac: "#B9A6F2", lime: "#D6F06A", char: "#3A3A37" };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var bar = null, cardTimer = null;
+
+  // "Get the extension" goes straight to this browser's store.
+  var ua = navigator.userAgent;
+  var get = document.getElementById("getExt");
+  if (/Edg\//.test(ua)) { get.href = "https://microsoftedge.microsoft.com/addons/detail/oeajkpifiblgkhdfpeomghkjpmnidfco"; get.textContent = "Add to Edge"; get.target = "_blank"; }
+  else if (/Chrome\//.test(ua) && !/OPR\//.test(ua)) { get.href = "https://chromewebstore.google.com/detail/oeambgioegliggbephkomgammciegmpf"; get.textContent = "Add to Chrome"; get.target = "_blank"; }
+
+  // The hero card: one item at a time, flowing right to left like the line.
+  function card(items, wx) {
+    var slides = [];
+    slides.push('<span class="chip" style="background:#B9A6F2">Calendar · example</span><b>Production meeting</b><span class="when">in 25 min · Studio B</span>');
+    items.slice(0, 3).forEach(function (i) {
+      slides.push('<span class="chip" style="background:' + (COLORS[i.color] || COLORS.coral) + '">' + esc(i.source) + "</span><b>" + esc(i.title) + "</b>");
+    });
+    if (wx) slides.push('<span class="chip" style="background:#D6F06A">Weather</span><b style="font-size:52px">' + esc(wx.t) + "°</b><span class=\"when\" style=\"color:rgba(242,240,233,.7)\">" + esc(wx.name) + " · " + esc(wx.say) + "</span>");
+    var track = document.getElementById("track"), dotsEl = document.getElementById("dots");
+    track.innerHTML = slides.concat(slides[0]).map(function (h, k) { return '<div class="slide"' + (k >= slides.length ? ' aria-hidden="true"' : "") + ">" + h + "</div>"; }).join("");
+    dotsEl.innerHTML = slides.map(function (_, k) { return '<button type="button" aria-label="Item ' + (k + 1) + '"' + (k ? "" : ' class="on"') + "></button>"; }).join("");
+    var n = slides.length, idx = 0, hover = false;
+    var dots = dotsEl.querySelectorAll("button");
+    var show = function (i, animate) {
+      track.style.transition = animate === false || reduce ? "none" : "";
+      track.style.transform = "translateX(-" + i * 100 + "%)";
+      idx = i % n;
+      dots.forEach(function (d, k) { d.classList.toggle("on", k === idx); });
+    };
+    track.ontransitionend = function () { if (idx === 0) show(0, false); };
+    dots.forEach(function (d, k) { d.onclick = function () { show(k); tick(); }; });
+    var live = track.closest(".live");
+    live.onmouseenter = function () { hover = true; };
+    live.onmouseleave = function () { hover = false; };
+    function tick() {
+      clearTimeout(cardTimer);
+      if (reduce) return;
+      cardTimer = setTimeout(function () { if (!hover && !document.hidden) show(idx + 1 === n ? n : idx + 1); tick(); }, 3200);
+    }
+    tick();
+  }
+
+  document.getElementById("goBar").onclick = function () { if (bar) bar.spotlight(true); setTimeout(function () { bar && bar.spotlight(false); }, 4000); };
+
+  // Live headlines from Huddle; a few examples if they can't be reached.
+  var FALLBACK = [
+    { id: "x1", title: "Headlines from the sources you follow appear here", source: "Your source", handle: "a", color: "coral", date: Date.now() - 600000 },
+    { id: "x2", title: "Newsletters, blogs, channels and outlets, side by side", source: "Another", handle: "b", color: "mint", date: Date.now() - 3600000 },
+    { id: "x3", title: "Hover a headline to preview it, click to read", source: "Huddle", handle: "c", color: "lime", date: Date.now() - 7200000 },
+  ];
+  fetch(API + "/api/chyron").then(function (r) { return r.json(); }).then(function (j) { return j.items && j.items.length ? j.items : FALLBACK; })
+    .catch(function () { return FALLBACK; })
+    .then(function (items) {
+      card(items, null);
+      if (!window.HuddleChyron) return;
+      bar = HuddleChyron.mount({ items: items, homeUrl: API, alerts: false });
+      // Weather where the visitor is, roughly, for the bar and the card.
+      fetch(API + "/api/geo").then(function (r) { return r.json(); }).then(function (g) {
+        if (g.lat == null) return;
+        bar.setWeather({ lat: g.lat, lon: g.lon, name: g.city || "", unit: g.unit });
+        setTimeout(function () { var w = bar.info().weather; if (w) card(items, { t: w.t, name: w.name, say: w.say }); }, 2500);
+      }).catch(function () {});
+    });
+})();
+</script>
+</body>
+</html>
